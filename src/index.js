@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+//create a react element with buit in function
+//const element = React.createElement('h1', null, 'Hello React')
+
+
+// class Clock2 extends React.Component {
+//     render() {
+//         return (
+//             <h1>{this.props.children} {new Date().toLocaleDateString(this.props.locale)}</h1>
+//         );
+//     }
+// }
+
+// const clockObj = new Clock2();
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <div>
+        <App />
+        
+    </div>,
+    document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//ReactDom.render(<Clock2 locale="en-BD" />, document.getElementById("root2"));
