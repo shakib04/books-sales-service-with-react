@@ -10,8 +10,9 @@ export default class ContactApi extends Component {
         }
     }
 
+    //https://jsonplaceholder.typicode.com/users
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('http://127.0.0.1:8000/getAllUsers')
             .then(res => res.json())
             .then((data) => {
                 this.setState({
@@ -26,6 +27,7 @@ export default class ContactApi extends Component {
         if (!isLoaded) {
             return <div>
                 data is loading...
+                
             </div>
         } else {
             return (
@@ -34,13 +36,14 @@ export default class ContactApi extends Component {
                     {contacts.map((contact) => (
                         <div className="card" key={contact.id}>
                             <div className="card-body">
-                                <h5 className="card-title">{contact.name}</h5>
+                                <h5 className="card-title">{contact.username}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">{contact.email}</h6>
-                                <p className="card-text">{contact.company.catchPhrase}</p>
+                                <p className="card-text">{contact.password}</p>
                             </div>
                         </div>
                     ))}
 
+                    {console.log(contacts)}
 
                 </div>
 
