@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
     withRouter
 } from "react-router-dom";
 
-class NewAddress extends Component {
+// export const Component = withRouter(({ history, location }) => {
 
+// })
+
+class NewAddress extends Component {
 
     constructor(props) {
         super(props)
@@ -20,7 +20,7 @@ class NewAddress extends Component {
             Area: '',
             Country: '',
             City: '',
-            Mobile_Number: '',
+            Mobile_Number: ''
         }
     }
 
@@ -45,9 +45,13 @@ class NewAddress extends Component {
         })
 
         result = await result.json
-        console.log(result);
+        console.log(JSON.stringify({ userid, House_No, Road_No, Postal_Code, Area, City, Mobile_Number, Country }));
+        //const { location, history } = this.props
 
-        //withRouter.push("/user/address/list")
+        this.props.history.push("/user/address/list")
+        //return <Redirect to="/user/address/list" />
+        //history.push("/user/address/list")
+
 
     }
 
@@ -85,7 +89,7 @@ class NewAddress extends Component {
                                 <div class="col-md-6 mb-4">
                                     <div class="js-form-message">
                                         <label for="exampleFormControlInput2">Post Code*</label>
-                                        <input type="text" value={this.state.PostCode} onChange={(e) => { this.setState({ PostCode: e.target.value }) }} class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="Postal_Code" aria-label="Jack Wayley" placeholder="" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" />
+                                        <input type="text" value={this.state.Postal_Code} onChange={(e) => { this.setState({ Postal_Code: e.target.value }) }} class="form-control rounded-0 pl-3 placeholder-color-3" id="exampleFormControlInput2" name="Postal_Code" aria-label="Jack Wayley" placeholder="" required="" data-error-class="u-has-error" data-msg="Please enter your name." data-success-class="u-has-success" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">

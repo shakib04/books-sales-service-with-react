@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
 } from "react-router-dom";
 
@@ -17,23 +14,6 @@ export default class UserAddress extends Component {
             isLoaded: false
         }
     }
-
-    allAddress = [
-        {
-            "House_No": 10,
-            "Road_No": 10,
-            "Area": "Nikunja",
-            "Postal_Code": 1210,
-            "Mobile_Number": "01522048298"
-        },
-        {
-            "House_No": 15,
-            "Road_No": 12,
-            "Area": "Keranigonj",
-            "Postal_Code": 1252,
-            "Mobile_Number": "01429048298"
-        }
-    ]
 
     componentDidMount() {
         fetch('http://localhost:8000/api/user/myaccount/address?userid=1')
@@ -60,7 +40,7 @@ export default class UserAddress extends Component {
                         <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-5 mb-lg-8 pb-xl-1">Addresses</h6>
                         <p><Link to="/CreateAddress" class="btn btn-primary width-160 rounded-0 btn-wide font-weight-medium">Create New</Link></p>
                         <div class="row row-cols-1 row-cols-md-2">
-                            
+
                             {/* @foreach ($allAddress as $address) */}
                             {allAddress2.map((address) => (
                                 <div class="col">
@@ -77,8 +57,11 @@ export default class UserAddress extends Component {
                                         </address>
                                         <div class="d-flex">
                                             {/* prev {{ url('/user/edit/address') }}/{{ $address-> address_id}} */}
-                                            <Link to="/user/edit/address" class="btn btn-dark width-150 rounded-0 btn-wide font-weight-medium">Edit</Link>
-                                            <a href="{{url('/user/delete/address')}}/{{$address->address_id}}" class="btn btn-danger width-150 rounded-0 btn-wide font-weight-medium">Remove</a>
+                                            <Link to={{
+                                                pathname: `/user/address/update/${address.address_id}`
+                                            }}
+                                                class="btn btn-dark width-150 rounded-0 btn-wide font-weight-medium">Edit</Link>
+                                            <Link to={`/user/address/delete/${address.address_id}`} class="btn btn-danger width-150 rounded-0 btn-wide font-weight-medium">Remove</Link>
                                         </div>
                                         <div class="d-flex">
 
