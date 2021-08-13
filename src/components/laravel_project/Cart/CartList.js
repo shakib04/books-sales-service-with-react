@@ -156,8 +156,8 @@ export default function CartList() {
                                     <table class="shop_table shop_table_responsive">
                                         <tbody>
                                             <tr class="order-total">
-                                                <th>Total: {"  "}</th>
-                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"> {"  " + space} {total = pricebyQuantity.reduce((a, b) => a + b, 0)}</span> <span class="woocommerce-Price-currencySymbol"> Taka </span></strong>
+                                                <th>Total: &nbsp;</th>
+                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"> {total = pricebyQuantity.reduce((a, b) => a + b, 0)}</span> <span class="woocommerce-Price-currencySymbol"> Taka </span></strong>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -165,8 +165,9 @@ export default function CartList() {
                                 </div>
                             </div>
                             <div class="wc-proceed-to-checkout">
-                                <a href="{{url('/book/checkout')}}" class="checkout-button button alt wc-forward btn btn-dark btn-block rounded-0 py-4">Proceed
-                                    to checkout</a>
+                                <Link to="/order/checkout" class="checkout-button button alt wc-forward btn btn-dark btn-block rounded-0 py-4">Proceed
+                                    to checkout
+                                </Link>
                             </div>
                         </div>
                     </div>

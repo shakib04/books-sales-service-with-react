@@ -65,6 +65,9 @@
 
   <!-- all js files -->
 
+
+
+
   <script
     src="https://demo2.madrasthemes.com/bookworm-html/redesigned-octo-fiesta/assets/vendor/jquery/dist/jquery.min.js"></script>
   <script
@@ -96,6 +99,23 @@
   <script
     src="https://demo2.madrasthemes.com/bookworm-html/redesigned-octo-fiesta/assets/js/components/hs.show-animation.js"></script>
 
+
+  <script>
+    $("#payment_method").on("change", function () {
+      var s = $("#payment_method").val();
+      if (s == "Card") {
+        $("#card_payment_details").removeClass('d-none');
+        $("#mobile_banking_details").addClass('d-none');
+      } else if (s == "Mobile Banking") {
+        $("#card_payment_details").addClass('d-none');
+        $("#mobile_banking_details").removeClass('d-none');
+      } else {
+        $("#card_payment_details").addClass('d-none');
+        $("#mobile_banking_details").addClass('d-none');
+      }
+      console.log($(this).val());
+    });
+  </script>
 
   <script>
     $(document).on('ready', function () {
