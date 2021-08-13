@@ -72,18 +72,16 @@ export default function BooksList() {
                                             <span class="product__add-to-cart">ADD TO CART</span>
                                             <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                                         </Link>
-                                        <Link to={`/add/wishlist/${book.Id}`} class="mr-1 h-p-bg btn btn-outline-primary border-0">
-                                            <i class="fas fa-save">Save in Wishlist</i>
-                                        </Link>
-                                        <br />
-                                        <br />
-
-                                        <p>Selling By</p>
-                                        <Link to={`/shop/details/${book.shop_id_ref_books}`} class="h-p-bg btn btn-outline-primary border-0">
-                                            <i class="fas fa-store-alt">_--_</i>
+                                        <Link to={`/user/add/wish/${book.Id}`} >
+                                            <span class="product__add-to-cart">Save in Wishlist </span>
+                                            <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>
                                         </Link>
                                     </div>
+
                                 </div>
+                                <Link to={`/shop/details/${book.shop_id_ref_books}`}>
+                                    <i class="fas fa-store-alt"> Shop Name</i>
+                                </Link>
                             </div>
                         </div>
                     )}

@@ -6,6 +6,7 @@ import Address from "./components/laravel_project/Address/Address";
 import Profile from "./components/laravel_project/UserProfile/Profile";
 import Books from "./components/laravel_project/Books/Books";
 import Cart from "./components/laravel_project/Cart/Cart";
+import BookWish from "./components/laravel_project/UserWish/WishBook";
 import NavBar from "./components/laravel_project/Common_Compo/NavBar";
 import './App.css';
 import data from './data.json';
@@ -41,6 +42,9 @@ function App() {
         <Profile />
         <Address />
         <Cart />
+        <BookWish />
+
+
       </Router>
 
 

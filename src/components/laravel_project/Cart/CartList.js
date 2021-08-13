@@ -6,6 +6,7 @@ export default function CartList() {
     const [CartBookList, setCartBookList] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     let total = 0
+    let space = "  "
     //const [pricebyQuantity, setPricebyQuantity] = useState([])
     let pricebyQuantity = []
 
@@ -149,14 +150,14 @@ export default function CartList() {
                             <div id="cartAccordion" class="border border-gray-900 bg-white mb-5">
 
 
-                                <button onClick={updateTotalCartPrice}>Get Total Price</button>
+                                {/* <button onClick={updateTotalCartPrice}>Get Total Price</button> */}
 
                                 <div class="p-4d875 border">
                                     <table class="shop_table shop_table_responsive">
                                         <tbody>
                                             <tr class="order-total">
-                                                <th>Total</th>
-                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount">{total = pricebyQuantity.reduce((a, b) => a + b, 0)}</span> <span class="woocommerce-Price-currencySymbol"> Taka </span></strong>
+                                                <th>Total: {"  "}</th>
+                                                <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"> {"  " + space} {total = pricebyQuantity.reduce((a, b) => a + b, 0)}</span> <span class="woocommerce-Price-currencySymbol"> Taka </span></strong>
                                                 </td>
                                             </tr>
                                         </tbody>
