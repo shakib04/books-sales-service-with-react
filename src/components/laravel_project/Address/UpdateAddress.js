@@ -18,19 +18,13 @@ function UpdateAddress(props) {
     const history = useHistory()
 
     useEffect(async () => {
-        // const requestOptions = {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ userid: 1 })
-        // };
-        // fetch('http://localhost:8000/api/user/address/' + props.match.params.id, requestOptions)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         setUserAddress(data)
 
-        //     });
+        if (!localStorage.getItem("userid")) {
+            history.push("/user/login")
+            return
+        }
 
-        let data = await fetch('http://localhost:8000/api/user/address/' + props.match.params.id + "?userid=1");
+        let data = await fetch('http://localhost:8000/api/user/address/' + props.match.params.id + "?userid=" + localStorage.getItem("userid"));
         data = await data.json();
         setUserAddress(data)
         setIsLoaded(true)
@@ -53,7 +47,7 @@ function UpdateAddress(props) {
         let result = await fetch("http://localhost:8000/api/user/edit/address/" + props.match.params.id, {
             method: 'POST',
             body: JSON.stringify({
-                userid: 1,
+                userid: localStorage.getItem("userid"),
                 House_No,
                 Road_No,
                 Postal_Code,

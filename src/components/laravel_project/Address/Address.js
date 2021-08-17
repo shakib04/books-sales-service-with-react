@@ -8,10 +8,10 @@ import DeleteAddress from './DeleteAddress'
 export default function Address() {
     return (
         <div>
-            <Route exact path="/user/address/update/:id" component={UpdateAddress}></Route>
+            <Route exact path="/user/address/update/:id" children={<UpdateAddress />}></Route>
             <Route exact path="/CreateAddress" children={<NewAddress history={useHistory()} />}></Route>
-            <Route exact path="/user/address/list" component={UserAddress}></Route>
-            <Route exact path="/user/address/delete/:id" component={DeleteAddress}></Route>
-        </div>
+            <Route exact path="/user/address/list" children={<UserAddress history={useHistory()} />}></Route>
+            <Route exact path="/user/address/delete/:id" children={<DeleteAddress />}></Route>
+        </div >
     )
 }

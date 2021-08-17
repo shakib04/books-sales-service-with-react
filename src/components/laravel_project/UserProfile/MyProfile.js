@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function MyProfile() {
     const [userDetails, setUserDetails] = useState()
 
+    const history = useHistory()
+
 
 
     useEffect(async () => {
-        let data = await fetch('http://localhost:8000/api/user/myaccount/?userid=1');
+        if (!localStorage.getItem("userid")) {
+            history.push("/user/login")
+            return
+        }
+        let data = await fetch('http://localhost:8000/api/user/myaccount/?userid=' + localStorage.getItem("userid"));
         data = await data.json()
         console.log(data)
         setUserDetails(data)
@@ -21,6 +27,7 @@ export default function MyProfile() {
 
             <div>
 
+                <Link to="/user/address/list" className="btn m-1 p-1 btn-sm btn-primary">User Address</Link>
                 <table className="table">
                     <thead className="thead-dark">
                         <tr>

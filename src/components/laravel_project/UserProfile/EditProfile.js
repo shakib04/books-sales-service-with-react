@@ -12,7 +12,7 @@ export default function EditProfile() {
     useEffect(async () => {
 
 
-        let data = await fetch('http://localhost:8000/api/user/myaccount/?userid=1');
+        let data = await fetch('http://localhost:8000/api/user/myaccount/?userid=' + localStorage.getItem("userid"));
         data = await data.json()
         console.log(data)
         setName(data.name)
@@ -35,7 +35,7 @@ export default function EditProfile() {
             let result = await fetch("http://localhost:8000/api/user/profile/update", {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: 1,
+                    userid: localStorage.getItem("userid"),
                     gender,
                     name
                 }),

@@ -8,6 +8,7 @@ export default function NavBar() {
             <Link className="m-1 p-2" to="/user/my/profile">My Profile</Link>
             <Link className="m-1 p-2" to="/cart/list">My Cart</Link>
             <Link className="m-1 p-2" to="/user/wish/list">My Wishlist</Link>
+            <Link className="m-5 p-2 text-danger" to="/logout">Logout</Link>
         </div>
     )
 }

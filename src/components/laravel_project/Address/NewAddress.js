@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
     Link,
-    withRouter
+    withRouter, useHistory
 } from "react-router-dom";
 
 // export const Component = withRouter(({ history, location }) => {
@@ -12,8 +12,13 @@ class NewAddress extends Component {
 
     constructor(props) {
         super(props)
+        if (!localStorage.getItem("userid")) {
+            this.props.history.push("/user/login")
+            return
+        }
+        
         this.state = {
-            userid: 1,
+            userid: localStorage.getItem("userid"),
             House_No: '',
             Road_No: '',
             Postal_Code: '',
@@ -46,13 +51,8 @@ class NewAddress extends Component {
 
         result = await result.json
         console.log(JSON.stringify({ userid, House_No, Road_No, Postal_Code, Area, City, Mobile_Number, Country }));
-        //const { location, history } = this.props
 
         this.props.history.push("/user/address/list")
-        //return <Redirect to="/user/address/list" />
-        //history.push("/user/address/list")
-
-
     }
 
 

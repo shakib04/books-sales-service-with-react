@@ -8,7 +8,10 @@ import Books from "./components/laravel_project/Books/Books";
 import Cart from "./components/laravel_project/Cart/Cart";
 import BookWish from "./components/laravel_project/UserWish/WishBook";
 import Order from "./components/laravel_project/Order/Order";
+import Login from "./components/laravel_project/Login/Login"
+import Logout from "./components/laravel_project/Common_Compo/Logout";
 import NavBar from "./components/laravel_project/Common_Compo/NavBar";
+
 import './App.css';
 import data from './data.json';
 
@@ -37,6 +40,7 @@ function App() {
 
           <Route exact path="/user/list" component={ContactApi}></Route>
           <Route exact path="/user/add" component={AddUser}></Route>
+          <Route exact path="/logout" children={<Logout />}></Route>
         </Switch>
 
         <Books />
@@ -45,7 +49,7 @@ function App() {
         <Cart />
         <BookWish />
         <Order />
-
+        <Login />
 
       </Router>
 

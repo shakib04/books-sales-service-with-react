@@ -15,7 +15,7 @@ export default function WishList() {
 
     const handleDelete = async (e) => {
         console.log("book id: " + e.target.value);
-        let data = await fetch('http://localhost:8000/api/remove/wishlist/' + e.target.value + '?userid=1');
+        let data = await fetch('http://localhost:8000/api/remove/wishlist/' + e.target.value + '?userid=' + localStorage.getItem("userid"));
         data = await data.json()
         //history.push("/user/wish/list")
 

@@ -9,6 +9,10 @@ export default class UserAddress extends Component {
 
     constructor(props) {
         super(props)
+        if (!localStorage.getItem("userid")) {
+            this.props.history.push("/user/login")
+            return
+        }
         this.state = {
             allAddress2: [],
             isLoaded: false
@@ -16,7 +20,7 @@ export default class UserAddress extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/user/myaccount/address?userid=1')
+        fetch('http://localhost:8000/api/user/myaccount/address?userid=' + localStorage.getItem("userid"))
             .then(res => res.json())
             .then((data) => {
                 this.setState({

@@ -11,7 +11,7 @@ export default function CartList() {
     let pricebyQuantity = []
 
     useEffect(async () => {
-        let data = await fetch('http://localhost:8000/api/book/cart/list?userid=' + 1);
+        let data = await fetch('http://localhost:8000/api/book/cart/list?userid=' + localStorage.getItem("userid"));
         data = await data.json()
         console.clear()
         console.log(data)
