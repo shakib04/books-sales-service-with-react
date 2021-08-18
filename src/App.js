@@ -14,7 +14,7 @@ import NavBar from "./components/laravel_project/Common_Compo/NavBar";
 
 import './App.css';
 import data from './data.json';
-
+import { useState, useEffect } from "react";
 
 var cardId = 1;
 
@@ -22,12 +22,24 @@ var cardId = 1;
 let all_cards = data.map((element, index) => <Card key={index} id={cardId++} title={element.title} shortDesc={element.shortDesc} fullDesc={element.fullDesc} />)
 
 function App() {
+
+  const [logged, setLogged] = useState()
+
+  useEffect(() => {
+    if (localStorage.getItem("userid")) {
+      setLogged(true)
+    } else {
+      setLogged(false)
+    }
+
+  }, [])
+
   return (
     <div>
       {/* <Form2 /> */}
 
       <Router>
-        <NavBar />
+        <NavBar logged={logged} />
         <Switch>
 
           {/* <Route exact path="/user/address" children={<Address />}></Route> */}

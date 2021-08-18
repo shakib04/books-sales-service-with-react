@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import NavBar from '../Common_Compo/NavBar'
 
 export default function UserLogin() {
 
