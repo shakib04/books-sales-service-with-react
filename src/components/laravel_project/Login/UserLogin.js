@@ -38,26 +38,29 @@ export default function UserLogin() {
 
 
     return (
-        <div class="main">
-            <div class="col-md-6 col-sm-12">
-                <div class="login-form">
-                    <form autocomplete="on" onSubmit={handleLogin}>
-                        <div class="form-group">
-                            <label>Your Email</label>
-                            <input onChange={(e) => { setEmail(e.target.value) }} value={email} type="text" name="email" class="form-control" placeholder="Email" />
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input onChange={(e) => { setPassword(e.target.value) }} value={password} type="password" name="password" class="form-control" placeholder="Password" />
-                        </div>
-                        <button type="submit" class="btn btn-black">Login</button>
+        <>
+            <NavBar />
+            <div class="main">
+                <div class="col-md-6 col-sm-12">
+                    <div class="login-form">
+                        <form autocomplete="on" onSubmit={handleLogin}>
+                            <div class="form-group">
+                                <label>Your Email</label>
+                                <input onChange={(e) => { setEmail(e.target.value) }} value={email} type="text" name="email" class="form-control" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input onChange={(e) => { setPassword(e.target.value) }} value={password} type="password" name="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <button type="submit" class="btn btn-black">Login</button>
 
-                        <Link to="/user/signup" class="btn btn-secondary">Sign Up</Link>
-                    </form>
-                    <Link to="/home/books/list" class="btn btn-link">Back to Book List</Link>
-                    <h3 className="text-danger">{ errorMsg}</h3>
+                            <Link to="/user/signup" class="btn btn-secondary">Sign Up</Link>
+                        </form>
+                        <Link to="/home/books/list" class="btn btn-link">Back to Book List</Link>
+                        <h3 className="text-danger">{errorMsg}</h3>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

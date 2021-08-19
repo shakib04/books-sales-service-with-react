@@ -6,8 +6,8 @@ import Protected from '../Common_Compo/Protected'
 export default function Cart() {
     return (
         <div>
-            <Route exact path="/cart/list" children={<CartList />} >
-                <Protected component={<CartList />}></Protected>
+            <Route exact path="/cart/list" >
+                <Protected cmp={CartList}></Protected>
             </Route>
         </div>
     )

@@ -39,7 +39,7 @@ function App() {
       {/* <Form2 /> */}
 
       <Router>
-        <NavBar logged={logged} />
+        
         <Switch>
 
           {/* <Route exact path="/user/address" children={<Address />}></Route> */}
