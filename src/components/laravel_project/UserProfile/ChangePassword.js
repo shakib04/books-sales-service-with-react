@@ -40,7 +40,7 @@ export default function ChangePassword() {
             let result = await fetch("http://localhost:8000/api/user/changepassword", {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: 1,
+                    userid: localStorage.getItem("userid"),
                     Current_Password: currentPassword,
                     New_Password: newPassword
                 }),

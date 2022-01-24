@@ -9,7 +9,7 @@ export default function Order() {
         <div>
             <Route exact path="/order/checkout" children={<Checkout />}></Route>
             <Route exact path="/my/order/list" children={<OrderList />}></Route>
-            <Route exact path="/my/order/:id" children={<OrderById />}></Route>
+            <Route exact path="/my/orderid/:id" children={<OrderById />}></Route>
         </div>
     )
 }

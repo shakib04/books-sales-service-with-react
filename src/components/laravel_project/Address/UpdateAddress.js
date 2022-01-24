@@ -45,7 +45,7 @@ function UpdateAddress(props) {
 
         e.preventDefault();
         let result = await fetch("http://localhost:8000/api/user/edit/address/" + props.match.params.id, {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify({
                 userid: localStorage.getItem("userid"),
                 House_No,

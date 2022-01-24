@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import NavBar from '../Common_Compo/NavBar'
 
 export default function SignUp() {
 
@@ -34,7 +35,7 @@ export default function SignUp() {
                 .then(response => {
                     console.log();
                     if (response.status == 200) {
-                        history.push("/user/home")
+                        history.push("/user/login")
                     }
                     setStatusCode(response.status);
                     return response.json();
@@ -56,8 +57,9 @@ export default function SignUp() {
 
     return (
         <div className="tab-content" id="myTabContent">
+            <NavBar/>
             <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <h3 className="register-heading">Register as an User</h3>
+                <h3 className="register-heading">Signup as an User</h3>
                 <form action method="post" onSubmit={handleSignUp}>
 
                     <div className="row register-form">

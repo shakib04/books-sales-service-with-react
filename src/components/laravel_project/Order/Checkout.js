@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory, Link } from 'react-router-dom'
+
 
 export default function Checkout() {
 
@@ -8,16 +10,26 @@ export default function Checkout() {
     const [mobileBankName, setMobileBankName] = useState("")
     const [cardNumber, setCardNumber] = useState("")
 
+    const [totalAmountToPay, setTotalAmountToPay] = useState(0)
+
     const [addressId, setAddressId] = useState()
 
+    const history = useHistory()
 
 
     useEffect(async () => {
-        let result = await fetch('http://localhost:8000/api/user/myaccount/address?userid=1');
+        let result = await fetch('http://localhost:8000/api/user/myaccount/address?userid=' + localStorage.getItem('userid'));
         result = await result.json()
         console.clear()
         console.log(result)
         setAllAddress(result)
+
+        let data = await fetch('http://localhost:8000/api/book/cart/list?userid=' + localStorage.getItem("userid"));
+        data = await data.json()
+        console.clear()
+        console.log(data)
+
+        setTotalAmountToPay(data[2])
 
     }, [])
 
@@ -36,7 +48,7 @@ export default function Checkout() {
             let result = await fetch("http://localhost:8000/api/order/checkout/", {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: 1,
+                    userid: localStorage.getItem('userid'),
                     address: addressId,
                     payment_method: paymentMethod,
                     which_mobile_bank: mobileBankName,
@@ -48,14 +60,20 @@ export default function Checkout() {
                     "Accept": "application/json"
                 }
             }).then(response => response.json())
+                .then(response => {
+                    if (response == 1) {
+                        history.push("/my/order/list")
+                    }
+                })
             //history.push("/cart/list")
-            console.log(result);
+            //console.log(result);
         }
     }
 
     return (
         <div id="content" class="site-content bg-punch-light space-bottom-3">
             <div class="col-full container">
+                <Link to="/cart/list" className="btn btn-sm m-2 btn-dark">Back to Cart</Link>
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main">
                         <article id="post-6" class="post-6 page type-page status-publish hentry">
@@ -65,7 +83,6 @@ export default function Checkout() {
 
                             <div class="entry-content">
                                 <div class="woocommerce">
-
 
                                     <form onSubmit={handleCheckout} name="checkout" method="post" class="checkout woocommerce-checkout row mt-8" enctype="multipart/form-data" novalidate="novalidate">
 
@@ -194,9 +211,9 @@ export default function Checkout() {
                                                                 <tr class="checkout-subtotal">
                                                                     <th>Subtotal</th>
                                                                     <td data-title="Subtotal">
-                                                                        {/* <span class="woocommerce-Price-amount amount">
-                                                                            <span class="woocommerce-Price-currencySymbol">Taka</span> {{ $totalAmountToPay }}
-                                                                        </span> */}
+                                                                        <span class="woocommerce-Price-amount amount">
+                                                                            <span class="woocommerce-Price-currencySymbol">Taka</span> {totalAmountToPay}
+                                                                        </span>
                                                                     </td>
                                                                 </tr>
                                                                 <tr class="order-shipping">

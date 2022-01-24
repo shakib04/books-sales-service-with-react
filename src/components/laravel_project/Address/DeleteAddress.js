@@ -1,7 +1,7 @@
 import React from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, withRouter } from 'react-router-dom'
 
-export default function DeleteAddress(props) {
+function DeleteAddress(props) {
 
     const history = useHistory();
 
@@ -24,3 +24,4 @@ export default function DeleteAddress(props) {
         </div>
     )
 }
+export default withRouter(DeleteAddress)

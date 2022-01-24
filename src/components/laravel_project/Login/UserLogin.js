@@ -4,8 +4,8 @@ import NavBar from '../Common_Compo/NavBar'
 
 export default function UserLogin() {
 
-    const [email, setEmail] = useState("j@mail.com")
-    const [password, setPassword] = useState("12345")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [userDetails, setUserDetails] = useState()
 
     const [errorMsg, setErrorMsg] = useState()
@@ -52,11 +52,11 @@ export default function UserLogin() {
                                 <label>Password</label>
                                 <input onChange={(e) => { setPassword(e.target.value) }} value={password} type="password" name="password" class="form-control" placeholder="Password" />
                             </div>
-                            <button type="submit" class="btn btn-black">Login</button>
+                            <button type="submit" class="btn btn-dark btn-sm">Login</button>
 
-                            <Link to="/user/signup" class="btn btn-secondary">Sign Up</Link>
+                            <Link to="/user/signup" class="btn btn-danger btn-sm m-3">Sign Up</Link>
                         </form>
-                        <Link to="/home/books/list" class="btn btn-link">Back to Book List</Link>
+                        <Link to="/home/books/list" class="btn btn-primary btn-sm">Back to Book List</Link>
                         <h3 className="text-danger">{errorMsg}</h3>
                     </div>
                 </div>

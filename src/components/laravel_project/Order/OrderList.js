@@ -48,7 +48,7 @@ export default function OrderList() {
                             </td>
                             <td className="align-middle py-5">
                                 <div className="d-flex justify-content-center">
-                                    <Link to={`/my/order/${order.order_id}`} className="btn btn-dark rounded-0 btn-wide font-weight-medium">Details</Link>
+                                    <Link to={`/my/orderid/${order.order_id}`} className="btn btn-dark rounded-0 btn-wide font-weight-medium">Details</Link>
                                 </div>
                             </td>
                         </tr></tbody>

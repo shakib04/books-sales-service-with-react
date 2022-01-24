@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, withRouter, useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import NavBar from '../Common_Compo/NavBar';
 
 export default function CartList() {
 
     const [CartBookList, setCartBookList] = useState([])
+    const [CartList, setCartList] = useState([])
     const [totalPrice, setTotalPrice] = useState(0)
     let total = 0
     let space = "  "
@@ -17,6 +19,7 @@ export default function CartList() {
         console.clear()
         console.log(data)
         setCartBookList(data)
+        setCartList(data[0])
 
         // if (CartBookList.length > 0) {
         //     CartBookList[1].map((book, index) => {
@@ -27,18 +30,33 @@ export default function CartList() {
 
     }, [])
 
-    const updateTotalCartPrice = async (e) => {
-        if (CartBookList.length > 0) {
-            CartBookList[1].map((book, index) => {
-                //setTotalPrice()
-                console.log(totalPrice + CartBookList[0][index].Quantity * book.Price);
-            })
-        }
+    const handleRemoveCart = async (e) => {
+        e.preventDefault()
+        await fetch('http://localhost:8000/api/book/remove/cart/' + e.target.value, { method: 'DELETE' });
+        console.log(e.target.value);
+        swal("Done!", "Item Removed from Cart", "success");
 
+        let data = await fetch('http://localhost:8000/api/book/cart/list?userid=' + localStorage.getItem("userid"));
+        data = await data.json()
+        console.clear()
+        console.log(data)
+        setCartBookList(data)
+        setCartList(data[0])
     }
 
     if (CartBookList.length < 1) {
         return <p>Data is loading</p>
+    }
+    else if (CartBookList[0].length < 1) {
+        return <>
+            <NavBar />
+            <h3>No Book in Cart List</h3>
+        </>
+    } else if (CartList.length < 1) {
+
+        return <>
+            <NavBar /><p>Data is loading</p>
+        </>
     }
     else {
 
@@ -66,7 +84,7 @@ export default function CartList() {
                                                                 <th className="product-price">Price</th>
                                                                 <th className="product-quantity">Quantity</th>
                                                                 <th className="product-subtotal">Total</th>
-                                                                <th className="product-remove">&nbsp;</th>
+                                                                <th className="product-remove">Remove</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -124,9 +142,9 @@ export default function CartList() {
 
                                                                     </td>
                                                                     <td className="product-remove">
-                                                                        <a href="#" className="remove" aria-label="Remove this item">
-
-                                                                        </a>
+                                                                        <button onClick={handleRemoveCart} value={CartList[index].cart_id} className="remove btn-sm btn-danger" aria-label="Remove this item">
+                                                                            Remove
+                                                                        </button>
                                                                     </td>
 
                                                                 </tr>
@@ -138,6 +156,7 @@ export default function CartList() {
 
                                                                     <input type="submit" className="button" name="update_cart" value="Update cart" />
                                                                     <input type="hidden" id="_wpnonce" name="_wpnonce" value="db025d7a70" /><input type="hidden" name="_wp_http_referer" value="/storefront/cart/" />
+
                                                                 </td>
                                                             </tr>
                                                         </tbody>

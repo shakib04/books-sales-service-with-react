@@ -6,6 +6,8 @@ export default function BooksList() {
 
     const [BooksList, setBooksList] = useState([])
 
+    const [searchBookName, setSearchBookName] = useState("")
+
     useEffect(async () => {
         let data = await fetch('http://localhost:8000/api/book/list');
         data = await data.json()
@@ -13,14 +15,24 @@ export default function BooksList() {
         setBooksList(data)
     }, [])
 
+    const handleSearch = async (e) => {
+        let data = await fetch('http://localhost:8000/api/book/search/p?name=' + searchBookName);
+        data = await data.json()
+        console.log(data)
+        setBooksList(data)
+    }
 
     return (
         <>
             <NavBar />
+
+            <button onClick={handleSearch} className="m-2 btn btn-dark btn-sm">Search Books</button>
+
+            <input onMouseLeave={handleSearch} onChange={(e) => { setSearchBookName(e.target.value) }} value={searchBookName} placeholder="Search By Book Name" />
             <section class="space-bottom-3">
                 <div class="container">
                     <header class="mb-5 d-md-flex justify-content-between align-items-center">
-                        <h2 class="font-size-7 mb-3 mb-md-0">Bestselling Books</h2>
+                        <h2 class="font-size-7 mb-3 mb-md-0">Available Books</h2>
                         <a href="../shop/v1.html" class="h-primary d-block">View All <i class="glyph-icon flaticon-next"></i></a>
                     </header>
                     <div class="js-slick-carousel products no-gutters border-top border-left border-right" data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0" data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered--y" data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner--left ml-lg-n10" data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner--right mr-lg-n10" data-slides-show="5" data-responsive='[{
@@ -57,7 +69,7 @@ export default function BooksList() {
                                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
                                         <div class="woocommerce-loop-product__thumbnail">
                                             <Link to={`/book/details/${book.Id}`} className="d-block">
-                                                <img src={book.BookSampleImage1} class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description" />
+                                                <img height="300" width="200" src={book.BookSampleImage1} class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid" alt="image-description" />
                                             </Link>
                                         </div>
                                         <div class="woocommerce-loop-product__body product__body pt-3 bg-white">

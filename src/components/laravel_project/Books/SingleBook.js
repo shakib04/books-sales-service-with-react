@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, withRouter, useHistory } from 'react-router-dom';
+import NavBar from '../Common_Compo/NavBar';
+
 
 function SingleBook(props) {
 
@@ -23,7 +25,7 @@ function SingleBook(props) {
             let result = await fetch("http://localhost:8000/api/book/add/cart/" + props.match.params.id, {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: 1,
+                    userid: localStorage.getItem("userid"),
                     id: props.match.params.id,
                     quantity
                 }),
@@ -39,6 +41,7 @@ function SingleBook(props) {
 
     return (
         <div>
+            <NavBar/>
             <div id="primary" class="content-area">
                 <main id="main" class="site-main ">
                     <div class="product">

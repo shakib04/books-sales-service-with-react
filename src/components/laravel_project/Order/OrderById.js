@@ -79,57 +79,57 @@ function OrderById(props) {
                                                     <span className="font-weight-medium font-size-2">Taka {book.Price}</span>
                                                 </div>
                                             )}
-                                                </div>
-                                            
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className="border-bottom mb-5 pb-5">
+                                    <ul className="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
+                                        <li className="d-flex justify-content-between py-2">
+                                            <span className="font-weight-medium font-size-2">Subtotal:</span>
+                                            <span className="font-weight-medium font-size-2">Taka {orderDetails.amount}</span>
+                                        </li>
+                                        <li className="d-flex justify-content-between py-2">
+                                            <span className="font-weight-medium font-size-2">Shipping:</span>
+                                            <span className="font-weight-medium font-size-2">Free Shipping</span>
+                                        </li>
+                                        <li className="d-flex justify-content-between pt-2">
+                                            <span className="font-weight-medium font-size-2">Payment Method:</span>
+                                            <span className="font-weight-medium font-size-2">{orderDetails.payment_method}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="border-bottom mb-5 pb-4">
+                                    <div className="px-3 pl-md-5 pr-md-4">
+                                        <div className="d-flex justify-content-between">
+                                            <span className="font-size-2 font-weight-medium">Total</span>
+                                            <span className="font-weight-medium fon-size-2">Taka {orderDetails.amount}</span>
                                         </div>
                                     </div>
-                                    <div className="border-bottom mb-5 pb-5">
-                                        <ul className="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
-                                            <li className="d-flex justify-content-between py-2">
-                                                <span className="font-weight-medium font-size-2">Subtotal:</span>
-                                                <span className="font-weight-medium font-size-2">Taka {orderDetails.amount}</span>
-                                            </li>
-                                            <li className="d-flex justify-content-between py-2">
-                                                <span className="font-weight-medium font-size-2">Shipping:</span>
-                                                <span className="font-weight-medium font-size-2">Free Shipping</span>
-                                            </li>
-                                            <li className="d-flex justify-content-between pt-2">
-                                                <span className="font-weight-medium font-size-2">Payment Method:</span>
-                                                <span className="font-weight-medium font-size-2">{orderDetails.payment_method}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="border-bottom mb-5 pb-4">
-                                        <div className="px-3 pl-md-5 pr-md-4">
-                                            <div className="d-flex justify-content-between">
-                                                <span className="font-size-2 font-weight-medium">Total</span>
-                                                <span className="font-weight-medium fon-size-2">Taka {orderDetails.amount}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="px-3 pl-md-5 pr-md-4 mb-6 pb-xl-1">
-                                        <div className="row row-cols-1 row-cols-md-2">
-                                            <div className="col">
-                                                <h6 className="font-weight-medium font-size-22 mb-3">Shipping Address
-                                                </h6>
-                                                <address className="d-flex flex-column mb-0">
-                                                    {/* <span className="text-gray-600 font-size-2">{'{'}{'{'}Session('userFullName') }</span> */}
-                                                    <span className="text-gray-600 font-size-2">House No: {orderDetails.House_No }</span>
-                                                    <span className="text-gray-600 font-size-2">Road No: {orderDetails.Road_No }</span>
-                                                    <span className="text-gray-600 font-size-2">{orderDetails.Area }, {orderDetails.City}, {orderDetails.Postal_Code}</span>
-                                                    <span className="text-gray-600 font-size-2">{orderDetails.Country }</span>
-                                                    <span className="text-gray-600 font-size-2">Mobile: {orderDetails.Mobile_Number }</span>
-                                                </address>
-                                            </div>
+                                </div>
+                                <div className="px-3 pl-md-5 pr-md-4 mb-6 pb-xl-1">
+                                    <div className="row row-cols-1 row-cols-md-2">
+                                        <div className="col">
+                                            <h6 className="font-weight-medium font-size-22 mb-3">Shipping Address
+                                            </h6>
+                                            <address className="d-flex flex-column mb-0">
+                                                {/* <span className="text-gray-600 font-size-2">{'{'}{'{'}Session('userFullName') }</span> */}
+                                                <span className="text-gray-600 font-size-2">House No: {orderDetails.House_No}</span>
+                                                <span className="text-gray-600 font-size-2">Road No: {orderDetails.Road_No}</span>
+                                                <span className="text-gray-600 font-size-2">{orderDetails.Area}, {orderDetails.City}, {orderDetails.Postal_Code}</span>
+                                                <span className="text-gray-600 font-size-2">{orderDetails.Country}</span>
+                                                <span className="text-gray-600 font-size-2">Mobile: {orderDetails.Mobile_Number}</span>
+                                            </address>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </main>
 
         </>
-            )
+    )
 }
-            export default withRouter(OrderById)
+export default withRouter(OrderById)
