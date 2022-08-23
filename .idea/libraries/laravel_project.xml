@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="laravel_project">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/components/laravel_project.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
